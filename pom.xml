@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>be.amasis</groupId>
+    <artifactId>AmasisLauncher</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <repositories>
+        <repository>
+            <id>github-litarvan</id>
+            <url>http://litarvan.github.io/maven/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.12</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.litarvan</groupId>
+            <artifactId>openauth</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.litarvan</groupId>
+            <artifactId>openlauncherlib</artifactId>
+            <version>3.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.theshark34.s-update</groupId>
+            <artifactId>s-update</artifactId>
+            <version>3.1.0-BETA</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.theshark34.swinger</groupId>
+            <artifactId>swinger</artifactId>
+            <version>1.0.0-BETA</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>launcher</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.png</include>
+                    <include>**/Ubuntu.ttf</include>
+
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>be.amasis.launcher.StartHandler</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
